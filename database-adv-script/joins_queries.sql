@@ -5,7 +5,6 @@ FROM bookings
 INNER JOIN users ON booking.user_id = users.user_id;
 
 
-
 # Left join
 SELECT *
 FROM property
