@@ -33,7 +33,8 @@ FROM bookings b
 JOIN users u ON b.user_id = u.user_id
 JOIN properties p ON b.property_id = p.property_id
 LEFT JOIN payments pay ON pay.booking_id = b.booking_id
-WHERE b.created_at >= '2024-01-01';
+WHERE b.status = 'confirmed'
+  AND b.total_price > 100;
 
 #before optimization
 
@@ -72,7 +73,8 @@ FROM bookings b
 JOIN users u ON b.user_id = u.user_id
 JOIN properties p ON b.property_id = p.property_id
 LEFT JOIN payments pay ON pay.booking_id = b.booking_id
-WHERE b.created_at >= '2024-01-01';
+WHERE b.status = 'confirmed'
+  AND b.total_price > 100;
 
 
 
@@ -98,7 +100,8 @@ FROM bookings b
 JOIN users u ON b.user_id = u.user_id
 JOIN properties p ON b.property_id = p.property_id
 LEFT JOIN payments pay ON pay.booking_id = b.booking_id
-WHERE b.created_at >= '2024-01-01';
+WHERE b.status = 'confirmed'
+  AND b.total_price > 100;
 
 
 EXPLAIN ANALYZE
@@ -123,5 +126,6 @@ FROM bookings b
 JOIN users u ON b.user_id = u.user_id
 JOIN properties p ON b.property_id = p.property_id
 LEFT JOIN payments pay ON pay.booking_id = b.booking_id
-WHERE b.created_at >= '2024-01-01';
+WHERE b.status = 'confirmed'
+  AND b.total_price > 100;
 
